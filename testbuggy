@@ -1,0 +1,72 @@
+	local t=reanimate()
+	if type(t)~="table" then return end
+	local raycastlegs=t.raycastlegs
+	local velbycfrvec=t.velbycfrvec
+	local addmode=t.addmode
+	local getJoint=t.getJoint
+	local velYchg=t.velYchg
+	local setWalkSpeed=t.setWalkSpeed
+	local RootJoint=getJoint("RootJoint")
+	local RightShoulder=getJoint("Right Shoulder")
+	local LeftShoulder=getJoint("Left Shoulder")
+	local RightHip=getJoint("Right Hip")
+	local LeftHip=getJoint("Left Hip")
+	local Neck=getJoint("Neck")
+	local getPartFromMesh = t.getPartFromMesh
+	local getPartJoint = t.getPartJoint
+	
+    local AccessoryWeld = getPartFromMesh(3164803967,3164818029)
+    local AccessoryWeld = getPartJoint(AccessoryWeld)
+	
+	addmode("default", {
+		    idle = function()
+			local rY, lY = raycastlegs()
+
+			local Ychg=velYchg()/20
+
+            RightShoulder.C0=Lerp(RightShoulder.C0,cfMul(cf(1,0.5,0),angles(0,1.5707963267948966,0)),deltaTime) 
+            LeftShoulder.C0=Lerp(LeftShoulder.C0,cfMul(cf(-1,0.5,0),angles(0,-1.5707963267948966,0)),deltaTime) 
+            Neck.C0=Lerp(Neck.C0,cfMul(cf(0,1,0),angles(-1.5707963267948966,0,3.141592653589793)),deltaTime) 
+            RightHip.C0=Lerp(RightHip.C0,cfMul(cf(1,-1,0),angles(0,1.5707963267948966,0)),deltaTime) 
+            RootJoint.C0=Lerp(RootJoint.C0,angles(-1.5707963267948966,0,3.141592653589793),deltaTime) 
+            LeftHip.C0=Lerp(LeftHip.C0,cfMul(cf(-1,-1,0),angles(0,-1.5707963267948966,0)),deltaTime) 
+            AccessoryWeld.C0=Lerp(AccessoryWeld.C0,cf(-1,3.6,0),deltaTime) 
+
+		end,
+		    walk = function()
+			local Vfw, Vrt = velbycfrvec()
+
+			local rY, lY = raycastlegs()
+
+			local Ychg=velYchg()/20
+
+            RightShoulder.C0=Lerp(RightShoulder.C0,cfMul(cf(1,0.5,0),angles(0,1.5707963267948966,0)),deltaTime) 
+            LeftShoulder.C0=Lerp(LeftShoulder.C0,cfMul(cf(-1,0.5,0),angles(0,-1.5707963267948966,0)),deltaTime) 
+            Neck.C0=Lerp(Neck.C0,cfMul(cf(0,1,0),angles(-1.5707963267948966,0,3.141592653589793)),deltaTime) 
+            RightHip.C0=Lerp(RightHip.C0,cfMul(cf(1,-1,0),angles(0,1.5707963267948966,0)),deltaTime) 
+            RootJoint.C0=Lerp(RootJoint.C0,angles(-1.5707963267948966,0,3.141592653589793),deltaTime) 
+            LeftHip.C0=Lerp(LeftHip.C0,cfMul(cf(-1,-1,0),angles(0,-1.5707963267948966,0)),deltaTime) 
+            AccessoryWeld.C0=Lerp(AccessoryWeld.C0,cfMul(cf(-1,3.6,0),angles(0.17453292519943295*sin(sine*70),0.17453292519943295*sin(sine*50),0.17453292519943295*sin(sine*60))),deltaTime) 
+		end,
+		    jump = function()
+			velYchg()
+            RightShoulder.C0=Lerp(RightShoulder.C0,cfMul(cf(1,0.5,0),angles(0,1.5707963267948966,0)),deltaTime) 
+            LeftShoulder.C0=Lerp(LeftShoulder.C0,cfMul(cf(-1,0.5,0),angles(0,-1.5707963267948966,0)),deltaTime) 
+            Neck.C0=Lerp(Neck.C0,cfMul(cf(0,1,0),angles(-1.5707963267948966,0,3.141592653589793)),deltaTime) 
+            RightHip.C0=Lerp(RightHip.C0,cfMul(cf(1,-1,0),angles(0,1.5707963267948966,0)),deltaTime) 
+            RootJoint.C0=Lerp(RootJoint.C0,angles(-1.5707963267948966,0,3.141592653589793),deltaTime) 
+            LeftHip.C0=Lerp(LeftHip.C0,cfMul(cf(-1,-1,0),angles(0,-1.5707963267948966,0)),deltaTime) 
+            AccessoryWeld.C0=Lerp(AccessoryWeld.C0,cfMul(cf(-1,3,-2),angles(-0.5235987755982988,0,0)),deltaTime) 
+		end,
+		    fall = function()
+			velYchg()
+            RightShoulder.C0=Lerp(RightShoulder.C0,cfMul(cf(1,0.5,0),angles(0,1.5707963267948966,0)),deltaTime) 
+            LeftShoulder.C0=Lerp(LeftShoulder.C0,cfMul(cf(-1,0.5,0),angles(0,-1.5707963267948966,0)),deltaTime) 
+            Neck.C0=Lerp(Neck.C0,cfMul(cf(0,1,0),angles(-1.5707963267948966,0,3.141592653589793)),deltaTime) 
+            RightHip.C0=Lerp(RightHip.C0,cfMul(cf(1,-1,0),angles(0,1.5707963267948966,0)),deltaTime) 
+            RootJoint.C0=Lerp(RootJoint.C0,angles(-1.5707963267948966,0,3.141592653589793),deltaTime) 
+            LeftHip.C0=Lerp(LeftHip.C0,cfMul(cf(-1,-1,0),angles(0,-1.5707963267948966,0)),deltaTime) 
+            AccessoryWeld.C0=Lerp(AccessoryWeld.C0,cfMul(cf(-1,3,2),angles(0.5235987755982988,0,0)),deltaTime) 
+		end
+	})
+end)
