@@ -1,4 +1,3 @@
-print("hi")
 --[[getgenv().OxideSettings = {
 Refit = true,
 noclip = true,
