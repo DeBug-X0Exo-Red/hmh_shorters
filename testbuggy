@@ -26,9 +26,9 @@ end
 
 OxideSettings.TransparentRig = true
 OxideSettings.ClickFling = true
-OxideSettings.TeleportCharacter = true
+OxideSettings.TeleportCharacter = false
 OxideSettings.HatCollide = false
-OxideSettings.HideCharacter = true
+OxideSettings.HideCharacter = false
 if OxideSettings.Legacy == nil then
 	OxideSettings.Legacy = false 
 end
